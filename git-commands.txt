@@ -1,0 +1,15 @@
+# To clone repositor, it is better to use https as u don't need to worry about
+# ssh key configs
+git clone 
+
+# commit your changes to local git
+git commit -a -m "Add comment"
+
+#push your changes to remote from git directory
+git push
+
+#fetch changes from remote from git directory
+git fetch 
+
+
+
