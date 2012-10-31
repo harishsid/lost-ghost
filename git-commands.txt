@@ -9,7 +9,9 @@ git commit -a -m "Add comment"
 git push
 
 #fetch changes from remote from git directory
-git fetch 
+git fetch
+
+## Note compare these commands with mac as these didn't work. 
 
 
 
