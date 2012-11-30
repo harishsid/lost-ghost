@@ -1,0 +1,13 @@
+Technologies I know
+
+
+Technologies to learn
+
+New databases - MongoDB, cassandra, Neo4j
+
+Build system - Gradle
+
+Frameworks - CPlEX, MVEL, Guava
+
+
+Unit testing - Spok
