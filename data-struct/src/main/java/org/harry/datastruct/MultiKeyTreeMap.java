@@ -70,8 +70,7 @@ import java.util.Map;
  * 
  */
 public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
-
-    public static final String NILL = "*NILL";
+    
 
     /**
      * The number of key-value mappings contained in this map.
