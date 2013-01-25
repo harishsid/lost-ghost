@@ -13,5 +13,7 @@ git fetch
 
 ## Note compare these commands with mac as these didn't work. 
 
+#ssh based auth setup
+https://help.github.com/articles/generating-ssh-keys
 
 
