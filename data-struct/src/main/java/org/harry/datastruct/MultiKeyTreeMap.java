@@ -1,11 +1,16 @@
-/**
- * 
+/* 
+ * Copyright (c) 2008 FMR Corp.
+ * All Rights Reserved.
+ *
+ * Fidelity Confidential Information.
+ * Created on Jan 25, 2013
  */
 package org.harry.datastruct;
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,7 +75,8 @@ import java.util.Map;
  * 
  */
 public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
-    
+
+    public static final String NILL = "*NILL";
 
     /**
      * The number of key-value mappings contained in this map.
@@ -100,7 +106,9 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
      * @return value if found.
      */
     public V get(M key) {
-        Iterator<K> keys = validateKeys(key);
+        validateKeys(key);
+        // Clone the list to make sure list is not modified while iterating.
+        Iterator<K> keys = new ArrayList<K>(key.getkeys()).iterator();
         return entryNode.get(keys);
     }
 
@@ -111,8 +119,21 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
      * @return value if found.
      */
     public V findBestMatch(M key) {
-        Iterator<K> keys = validateKeys(key);
+        validateKeys(key);
+        // Clone the list to make sure list is not modified while iterating.
+        Iterator<K> keys = new ArrayList<K>(key.getkeys()).iterator();
         return entryNode.findBestMatch(keys);
+    }
+
+    /**
+     * Navigate tree nodes to match or best match all keys in {@link MultiKeyTreeMapKey} and return matched value.
+     * 
+     * @param key Multi key.
+     * @return value if found.
+     */
+    public V findBestMatch2(M key) {
+        validateKeys(key);        
+        return entryNode.findBestMatch2(key.getkeys());
     }
 
     /**
@@ -123,7 +144,9 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
      * @param value if found.
      */
     public void put(M key, V value) {
-        Iterator<K> keys = validateKeys(key);
+        validateKeys(key);
+        // Clone the list to make sure list is not modified while iterating.
+        Iterator<K> keys = new ArrayList<K>(key.getkeys()).iterator();
         entryNode.put(keys, value);
         size++;
     }
@@ -153,7 +176,7 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
      * @param key keys to validate.
      * @return Iterator of keys.
      */
-    private Iterator<K> validateKeys(M key) {
+    private void validateKeys(M key) {
         if (key == null || key.getkeys() == null) {
             throw new NullPointerException();
         }
@@ -161,8 +184,6 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
             throw new IllegalArgumentException("Invalid Key specified, number conditions/key exceed queue depth "
                 + threshold);
         }
-        Iterator<K> keys = key.getkeys().iterator();
-        return keys;
     }
 
     /**
@@ -187,6 +208,28 @@ public class MultiKeyTreeMap<K, M extends MultiKeyTreeMapKey<K>, V> {
                     return null;
                 }
                 return childNode.findBestMatch(keys);
+            } else { // End of tree node.
+                return value;
+            }
+        }
+
+        private V findBestMatch2(List<K> keys) {
+            if (!keys.isEmpty()) {
+                List<K> searchKeys = new ArrayList<K>(keys);
+                Object key = searchKeys.remove(0);
+                if (key != null) {
+                    TreeNode<K, V> child = childNodes.get(key);
+                    if (child != null) { // If no found naviagate under Nill condition.
+                        V match = child.findBestMatch2(searchKeys);
+                        if (match != null) {
+                            return match;
+                        }
+                    }
+                }
+                if (defaultChildNode != null) {
+                    return defaultChildNode.findBestMatch2(searchKeys);
+                }
+                return null;
             } else { // End of tree node.
                 return value;
             }
