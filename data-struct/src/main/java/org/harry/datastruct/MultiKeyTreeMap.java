@@ -1,10 +1,3 @@
-/* 
- * Copyright (c) 2008 FMR Corp.
- * All Rights Reserved.
- *
- * Fidelity Confidential Information.
- * Created on Jan 25, 2013
- */
 package org.harry.datastruct;
 
 import java.util.ArrayList;

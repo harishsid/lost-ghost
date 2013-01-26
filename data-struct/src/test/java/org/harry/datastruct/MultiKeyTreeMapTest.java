@@ -1,10 +1,3 @@
-/* 
- * Copyright (c) 2013 FMR Corp.
- * All Rights Reserved.
- *
- * Fidelity Confidential Information.
- * Created on Jan 25, 2013
- */
 package org.harry.datastruct;
 
 import org.junit.Before;
@@ -20,20 +13,20 @@ import static org.junit.Assert.assertEquals;
  */
 public class MultiKeyTreeMapTest {
     
-    private CFTRecord record1 = new CFTRecord( "NY", "MOTC", "CS", "US");
-    private CFTRecord record2 = new CFTRecord(null, "MOTC", "CS", "US");
-    private CFTRecord record3 = new CFTRecord(null, "MOTC", null, "US");    
-    private CFTRecord record4 = new CFTRecord("NY", "MOTC", null, null);
-    private CFTRecord record5 = new CFTRecord("NY", "GOLD", "CS", "US");
-    private CFTRecord record6 = new CFTRecord(null, null, "CS", null);
-    private CFTRecord record7 = new CFTRecord("NE", "GOLD", null, "US");
-    private CFTRecord record8 = new CFTRecord("NE", null, "CS", "US");
+    private StrockRecord record1 = new StrockRecord( "NY", "MOTC", "CS", "US");
+    private StrockRecord record2 = new StrockRecord(null, "MOTC", "CS", "US");
+    private StrockRecord record3 = new StrockRecord(null, "MOTC", null, "US");    
+    private StrockRecord record4 = new StrockRecord("NY", "MOTC", null, null);
+    private StrockRecord record5 = new StrockRecord("NY", "GOLD", "CS", "US");
+    private StrockRecord record6 = new StrockRecord(null, null, "CS", null);
+    private StrockRecord record7 = new StrockRecord("NE", "GOLD", null, "US");
+    private StrockRecord record8 = new StrockRecord("NE", null, "CS", "US");
     
-    private MultiKeyTreeMap<String, CFTRecord, CFTRecord> map = null;    
+    private MultiKeyTreeMap<String, StrockRecord, StrockRecord> map = null;    
     
    @Before
    public void setup() {
-       map = new MultiKeyTreeMap<String, CFTRecord, CFTRecord>(4);       
+       map = new MultiKeyTreeMap<String, StrockRecord, StrockRecord>(4);       
        map.put(record1, record1);
        map.put(record2, record2);
        map.put(record3, record3);
@@ -47,19 +40,19 @@ public class MultiKeyTreeMapTest {
    
    @Test
    public void testfullMatch() {
-       assertEquals(map.get(new CFTRecord( "NY", "MOTC", "CS", "US")), record1);
+       assertEquals(map.get(new StrockRecord( "NY", "MOTC", "CS", "US")), record1);
    }
    
    @Test
    public void testBestMatch() {       
-       assertEquals(map.findBestMatch2(new CFTRecord("TK", "MOTC", "CS", "US")), record2);
-       assertEquals(map.findBestMatch2(new CFTRecord("NY", "MOTC", "CC", "US")), record4);
-       assertEquals(map.findBestMatch2(new CFTRecord("TK", "MOTC", "CC", "US")), record3);
+       assertEquals(map.findBestMatch2(new StrockRecord("TK", "MOTC", "CS", "US")), record2);
+       assertEquals(map.findBestMatch2(new StrockRecord("NY", "MOTC", "CC", "US")), record4);
+       assertEquals(map.findBestMatch2(new StrockRecord("TK", "MOTC", "CC", "US")), record3);
        
-       assertEquals(map.findBestMatch2(new CFTRecord("NY", "GOLD", "CS", "US")), record5);
-       assertEquals(map.findBestMatch2(new CFTRecord("TEXAS", "FID", "CS", "US")), record6);
-       assertEquals(map.findBestMatch2(new CFTRecord("NE", "GOLD", "CC", "US")), record7);
+       assertEquals(map.findBestMatch2(new StrockRecord("NY", "GOLD", "CS", "US")), record5);
+       assertEquals(map.findBestMatch2(new StrockRecord("TEXAS", "FID", "CS", "US")), record6);
+       assertEquals(map.findBestMatch2(new StrockRecord("NE", "GOLD", "CC", "US")), record7);
        
-       assertEquals(map.findBestMatch2(new CFTRecord("NE", "GOLD", "CS", "UE")), record6);
+       assertEquals(map.findBestMatch2(new StrockRecord("NE", "GOLD", "CS", "UE")), record6);
    }
 }

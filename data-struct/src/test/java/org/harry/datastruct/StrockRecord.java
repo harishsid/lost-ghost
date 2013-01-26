@@ -1,10 +1,3 @@
-/* 
- * Copyright (c) 2013 FMR Corp.
- * All Rights Reserved.
- *
- * Fidelity Confidential Information.
- * Created on Jan 25, 2013
- */
 package org.harry.datastruct;
 
 import java.util.List;
@@ -17,7 +10,7 @@ import com.google.common.collect.Lists;
  * @author <a href="mailto:a395432@fmr.com">a395432</a>
  * @since  
  */
-public class CFTRecord implements MultiKeyTreeMapKey<String> {
+public class StrockRecord implements MultiKeyTreeMapKey<String> {
     
     private String firm;
     private String iv_type;
@@ -32,7 +25,7 @@ public class CFTRecord implements MultiKeyTreeMapKey<String> {
      * @param country .
      * @param exchange .
      */
-    public CFTRecord(String exchange, String firm, String iv_type, String country) {
+    public StrockRecord(String exchange, String firm, String iv_type, String country) {
         super();
         this.firm = firm;
         this.iv_type = iv_type;
