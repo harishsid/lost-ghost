@@ -1,0 +1,10 @@
+Annotation based aspect
+
+Define pointcut - 
+@Pointcut("execution(@<Annotation> * *(..))")
+void operation() {}
+
+Define advise
+@Around("operation()")
+
+
