@@ -5,9 +5,12 @@ Technologies to learn
 
 New databases - MongoDB, cassandra, Neo4j
 
-Build system - Gradle
+Build system - Gradle, SBT, IVY
 
-Frameworks - CPlEX, MVEL, Guava
+Frameworks - CPlEX, MVEL, Guava, Akka, RXJava, Spark, Hadoop, HDFS, HSpace, Play framewok, Grizzly
+
+
+Architecture - Voilin Flash, XAData OBIE 
 
 
 Unit testing - Spok
