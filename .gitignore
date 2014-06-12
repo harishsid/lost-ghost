@@ -11,3 +11,11 @@
 **/**/.project
 **/.project
 .project
+**/**/**/target
+**/**/target
+**/target
+target
+**/**/**/.cache
+**/**/.cache
+**/.cache
+.cache
