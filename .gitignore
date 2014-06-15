@@ -20,3 +20,8 @@ target
 **/**/.cache
 **/.cache
 .cache
+**/**/**/.worksheet/
+**/**/.worksheet/
+**/.worksheet/
+.worksheet/
+lib_managed/
