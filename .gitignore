@@ -24,4 +24,5 @@ target
 **/**/.worksheet/
 **/.worksheet/
 .worksheet/
-lib_managed/
+.settings/
+
