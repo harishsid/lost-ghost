@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Defines type of Keys will be used for {@link MultiKeyTreeMapKey}
  * 
- * @author <a href="mailto:a395432@fmr.com">Harish Gavisiddaiah</a>
+ * @author <a href="mailto:harishsid@gmail.com">Harish Gavisiddaiah</a>
  * @since 2013
  * @param <K> type of keys used.
  */
